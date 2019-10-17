@@ -45,5 +45,5 @@ test {
 }
 
 generateTestGrammarSource {
-    arguments = ['-visitor', '-listener', '-package', 'arith']
+    arguments = ['-visitor', '-listener', '-package', 'arith.antlr']
 }
