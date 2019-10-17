@@ -5,7 +5,7 @@ import java.util.Map;
 
 public abstract class AbstractSymbolTable<T extends AbstractSymbolTable<T, E>, E> {
 
-  protected abstract T newScope();
+  protected abstract T newSymbolTable();
 
   AbstractSymbolTable<T, E> parent = null;
 
@@ -40,7 +40,7 @@ public abstract class AbstractSymbolTable<T extends AbstractSymbolTable<T, E>, E
   }
 
   public final T newChildScope() {
-    T table = newScope();
+    T table = newSymbolTable();
     table.parent = this;
     return table;
   }
