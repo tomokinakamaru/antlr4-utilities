@@ -1,0 +1,49 @@
+plugins {
+    id 'antlr'
+    id 'jacoco'
+    id 'java'
+    id 'com.github.ben-manes.versions' version '0.27.0'
+    id 'com.github.sherter.google-java-format' version '0.8'
+}
+
+group 'com.github.tomokinakamaru'
+
+version '0.1.0'
+
+sourceCompatibility = 1.8
+
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    antlr 'org.antlr:antlr4:4.7.2'
+    implementation 'org.antlr:antlr4-runtime:4.7.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
+}
+
+jacoco {
+    toolVersion = '0.8.4'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = false
+        csv.enabled = false
+    }
+}
+
+check {
+    dependsOn jacocoTestReport
+}
+
+test {
+    useJUnitPlatform()
+}
+
+generateTestGrammarSource {
+    arguments = ['-visitor', '-listener', '-package', 'arith']
+}
