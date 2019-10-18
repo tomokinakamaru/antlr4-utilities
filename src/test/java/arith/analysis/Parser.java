@@ -1,4 +1,4 @@
-package arith;
+package arith.analysis;
 
 import arith.antlr.ArithLexer;
 import arith.antlr.ArithParser;
@@ -11,7 +11,7 @@ import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.TokenStream;
 
-final class Parser extends AbstractParser<ArithParser> {
+public final class Parser extends AbstractParser<ArithParser> {
 
   @Override
   protected Function<CharStream, ? extends Lexer> newLexer() {

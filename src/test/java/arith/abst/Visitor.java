@@ -18,6 +18,11 @@ public class Visitor<T> extends AbstractVisitor<T> implements ArithVisitor<T> {
   }
 
   @Override
+  public T visitStmts(ArithParser.StmtsContext ctx) {
+    return visitChildren(ctx);
+  }
+
+  @Override
   public T visitStmt(ArithParser.StmtContext ctx) {
     return visitChildren(ctx);
   }

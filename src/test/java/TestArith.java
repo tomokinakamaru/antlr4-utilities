@@ -17,4 +17,9 @@ final class TestArith {
   void test3() {
     assert new Arith().run("x = 2; y = 3; 1 + x * y;") == 7;
   }
+
+  @Test
+  void test4() {
+    assert new Arith().run("x = { y = 1; y + 1; } * 2; x * 3;") == 12;
+  }
 }

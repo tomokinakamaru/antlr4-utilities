@@ -1,10 +1,13 @@
-package arith;
+package arith.analysis;
 
 import arith.abst.Visitor;
 import arith.antlr.ArithParser;
+import arith.data.VarTable;
 import org.antlr.v4.runtime.ParserRuleContext;
 
-final class Evaluator extends Visitor<Integer> {
+public final class Evaluator extends Visitor<Integer> {
+
+  private VarTable varTable;
 
   @Override
   protected Class<? extends ParserRuleContext> getContextClass() {
@@ -13,19 +16,22 @@ final class Evaluator extends Visitor<Integer> {
 
   @Override
   public Integer visitProg(ArithParser.ProgContext ctx) {
-    set(new VarTable());
+    varTable = set(new VarTable());
 
     Integer result = null;
-    for (ArithParser.StmtContext c : ctx.stmt()) {
+    for (ArithParser.StmtContext c : ctx.stmts().stmt()) {
       result = visit(c);
     }
+
     return result;
   }
 
   @Override
   public Integer visitAStmt(ArithParser.AStmtContext ctx) {
-    get(VarTable.class).set(ctx.NAME().getText(), visit(ctx.expr()));
-    return null;
+    String lhs = ctx.NAME().getText();
+    Integer rhs = visit(ctx.expr());
+    varTable.set(lhs, rhs);
+    return rhs;
   }
 
   @Override
@@ -66,11 +72,18 @@ final class Evaluator extends Visitor<Integer> {
   @Override
   public Integer visitElem(ArithParser.ElemContext ctx) {
     if (ctx.NAME() != null) {
-      return get(VarTable.class).get(ctx.NAME().getText());
+      return varTable.get(ctx.NAME().getText());
     }
     if (ctx.NUM() != null) {
       return Integer.valueOf(ctx.NUM().getText());
     }
-    return visit(ctx.expr());
+    if (ctx.expr() != null) {
+      return visit(ctx.expr());
+    }
+
+    varTable = varTable.createChildScope();
+    Integer result = visit(ctx.stmts());
+    varTable = varTable.getParent();
+    return result;
   }
 }

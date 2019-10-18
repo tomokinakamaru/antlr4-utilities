@@ -1,8 +1,8 @@
-package arith;
+package arith.data;
 
 import com.github.tomokinakamaru.antlr4utilities.AbstractSymbolTable;
 
-final class VarTable extends AbstractSymbolTable<VarTable, Integer> {
+public final class VarTable extends AbstractSymbolTable<VarTable, Integer> {
 
   @Override
   protected VarTable newSymbolTable() {

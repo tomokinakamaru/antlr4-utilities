@@ -19,6 +19,12 @@ public class Listener extends AbstractListener implements ArithListener {
   public void exitProg(ArithParser.ProgContext ctx) {}
 
   @Override
+  public void enterStmts(ArithParser.StmtsContext ctx) {}
+
+  @Override
+  public void exitStmts(ArithParser.StmtsContext ctx) {}
+
+  @Override
   public void enterStmt(ArithParser.StmtContext ctx) {}
 
   @Override

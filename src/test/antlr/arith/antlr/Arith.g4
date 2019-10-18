@@ -1,6 +1,8 @@
 grammar Arith;
 
-prog: stmt* EOF ;
+prog: stmts EOF ;
+
+stmts: stmt+ ;
 
 stmt: aStmt | cStmt ;
 
@@ -14,7 +16,7 @@ term: fact ((MUL | DIV) term)? ;
 
 fact: SUB? elem ;
 
-elem: NUM | NAME | '(' expr ')' ;
+elem: NUM | NAME | ('(' expr ')') | ('{' stmts '}');
 
 ADD: '+' ;
 
