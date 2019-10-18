@@ -20,8 +20,9 @@ public final class Context {
     return null;
   }
 
-  public void set(Object object) {
+  public <T> T set(T object) {
     map.put(object.getClass(), object);
+    return object;
   }
 
   public <T> void remove(Class<T> clazz) {
