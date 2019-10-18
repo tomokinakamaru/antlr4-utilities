@@ -10,12 +10,16 @@ public abstract class AbstractAnalyzer {
     this.context = context;
   }
 
+  protected final <T> boolean has(Class<T> clazz) {
+    return context.get(clazz) == null;
+  }
+
   protected final <T> T get(Class<T> clazz) {
     return context.get(clazz);
   }
 
-  protected final void set(Object object) {
-    context.set(object);
+  protected final <T> T set(T object) {
+    return context.set(object);
   }
 
   protected final <T> void remove(Class<T> clazz) {
