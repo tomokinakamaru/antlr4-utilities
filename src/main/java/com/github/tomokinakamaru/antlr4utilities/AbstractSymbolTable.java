@@ -7,7 +7,7 @@ public abstract class AbstractSymbolTable<T extends AbstractSymbolTable<T, E>, E
 
   protected abstract T newSymbolTable();
 
-  AbstractSymbolTable<T, E> parent = null;
+  T parent = null;
 
   private final Map<String, E> map = new LinkedHashMap<>();
 
@@ -39,10 +39,15 @@ public abstract class AbstractSymbolTable<T extends AbstractSymbolTable<T, E>, E
     }
   }
 
-  public final T newChildScope() {
+  @SuppressWarnings("unchecked")
+  public final T createChildScope() {
     T table = newSymbolTable();
-    table.parent = this;
+    table.parent = (T) this;
     return table;
+  }
+
+  public final T getParent() {
+    return parent;
   }
 
   protected E resolveConflict(String key, E oldEntity, E newEntity) {
