@@ -13,11 +13,23 @@ final class Evaluator extends Visitor<Integer> {
 
   @Override
   public Integer visitProg(ArithParser.ProgContext ctx) {
-    return visit(ctx.eval());
+    set(new VarTable());
+
+    Integer result = null;
+    for (ArithParser.StmtContext c : ctx.stmt()) {
+      result = visit(c);
+    }
+    return result;
   }
 
   @Override
-  public Integer visitEval(ArithParser.EvalContext ctx) {
+  public Integer visitAStmt(ArithParser.AStmtContext ctx) {
+    get(VarTable.class).set(ctx.NAME().getText(), visit(ctx.expr()));
+    return null;
+  }
+
+  @Override
+  public Integer visitCStmt(ArithParser.CStmtContext ctx) {
     return visit(ctx.expr());
   }
 

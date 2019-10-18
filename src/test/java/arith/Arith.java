@@ -19,6 +19,6 @@ public final class Arith extends AbstractCompiler {
 
   @Override
   protected List<AbstractAnalyzer> analyses() {
-    return Arrays.asList(new Parser(), new VarTableBuilder(), new Evaluator());
+    return Arrays.asList(new Parser(), new Evaluator());
   }
 }

@@ -1,10 +1,12 @@
 grammar Arith;
 
-prog: var* eval EOF ;
+prog: stmt* EOF ;
 
-var: 'var' NAME '=' NUM ';' ;
+stmt: aStmt | cStmt ;
 
-eval: 'eval' expr ';' ;
+aStmt: NAME '=' expr ';' ;
+
+cStmt: expr ';' ;
 
 expr: term ((ADD | SUB) expr)? ;
 

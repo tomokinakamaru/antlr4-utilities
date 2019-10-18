@@ -5,7 +5,7 @@ import arith.antlr.ArithParser;
 import com.github.tomokinakamaru.antlr4utilities.AbstractListener;
 import org.antlr.v4.runtime.ParserRuleContext;
 
-public abstract class Listener extends AbstractListener implements ArithListener {
+public class Listener extends AbstractListener implements ArithListener {
 
   @Override
   protected Class<? extends ParserRuleContext> getContextClass() {
@@ -19,16 +19,22 @@ public abstract class Listener extends AbstractListener implements ArithListener
   public void exitProg(ArithParser.ProgContext ctx) {}
 
   @Override
-  public void enterVar(ArithParser.VarContext ctx) {}
+  public void enterStmt(ArithParser.StmtContext ctx) {}
 
   @Override
-  public void exitVar(ArithParser.VarContext ctx) {}
+  public void exitStmt(ArithParser.StmtContext ctx) {}
 
   @Override
-  public void enterEval(ArithParser.EvalContext ctx) {}
+  public void enterAStmt(ArithParser.AStmtContext ctx) {}
 
   @Override
-  public void exitEval(ArithParser.EvalContext ctx) {}
+  public void exitAStmt(ArithParser.AStmtContext ctx) {}
+
+  @Override
+  public void enterCStmt(ArithParser.CStmtContext ctx) {}
+
+  @Override
+  public void exitCStmt(ArithParser.CStmtContext ctx) {}
 
   @Override
   public void enterExpr(ArithParser.ExprContext ctx) {}
