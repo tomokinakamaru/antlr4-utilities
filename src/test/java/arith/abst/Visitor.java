@@ -2,7 +2,7 @@ package arith.abst;
 
 import arith.antlr.ArithParser;
 import arith.antlr.ArithVisitor;
-import com.github.tomokinakamaru.antlr4utilities.AbstractVisitor;
+import com.github.tomokinakamaru.antlr4.utility.AbstractVisitor;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 public class Visitor<T> extends AbstractVisitor<T> implements ArithVisitor<T> {

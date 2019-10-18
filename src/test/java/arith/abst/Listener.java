@@ -2,7 +2,7 @@ package arith.abst;
 
 import arith.antlr.ArithListener;
 import arith.antlr.ArithParser;
-import com.github.tomokinakamaru.antlr4utilities.AbstractListener;
+import com.github.tomokinakamaru.antlr4.utility.AbstractListener;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 public class Listener extends AbstractListener implements ArithListener {

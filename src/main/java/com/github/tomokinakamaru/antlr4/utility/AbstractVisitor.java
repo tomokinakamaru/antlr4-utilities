@@ -1,4 +1,4 @@
-package com.github.tomokinakamaru.antlr4utilities;
+package com.github.tomokinakamaru.antlr4.utility;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;

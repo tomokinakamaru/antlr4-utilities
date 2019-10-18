@@ -1,4 +1,4 @@
-package com.github.tomokinakamaru.antlr4utilities;
+package com.github.tomokinakamaru.antlr4.utility;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

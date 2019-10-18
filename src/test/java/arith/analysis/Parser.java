@@ -2,7 +2,7 @@ package arith.analysis;
 
 import arith.antlr.ArithLexer;
 import arith.antlr.ArithParser;
-import com.github.tomokinakamaru.antlr4utilities.AbstractParser;
+import com.github.tomokinakamaru.antlr4.utility.AbstractParser;
 import java.util.function.Function;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Lexer;
