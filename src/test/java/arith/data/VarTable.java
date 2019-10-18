@@ -1,12 +1,13 @@
 package arith.data;
 
 import com.github.tomokinakamaru.antlr4.utility.AbstractSymbolTable;
+import java.util.function.Supplier;
 
 public final class VarTable extends AbstractSymbolTable<VarTable, Integer> {
 
   @Override
-  protected VarTable newSymbolTable() {
-    return new VarTable();
+  protected Supplier<VarTable> newSymbolTable() {
+    return VarTable::new;
   }
 
   @Override

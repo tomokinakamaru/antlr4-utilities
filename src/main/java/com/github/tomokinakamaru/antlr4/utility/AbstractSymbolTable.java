@@ -2,10 +2,11 @@ package com.github.tomokinakamaru.antlr4.utility;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public abstract class AbstractSymbolTable<T extends AbstractSymbolTable<T, E>, E> {
 
-  protected abstract T newSymbolTable();
+  protected abstract Supplier<T> newSymbolTable();
 
   T parent = null;
 
@@ -41,7 +42,7 @@ public abstract class AbstractSymbolTable<T extends AbstractSymbolTable<T, E>, E
 
   @SuppressWarnings("unchecked")
   public final T createChildScope() {
-    T table = newSymbolTable();
+    T table = newSymbolTable().get();
     table.parent = (T) this;
     return table;
   }
