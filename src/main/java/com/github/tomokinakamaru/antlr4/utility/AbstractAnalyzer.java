@@ -17,7 +17,7 @@ public abstract class AbstractAnalyzer {
   }
 
   protected final <T> boolean has(Class<T> clazz) {
-    return context.get(clazz) != null;
+    return context.has(clazz);
   }
 
   protected final <T> T get(Class<T> clazz) {
