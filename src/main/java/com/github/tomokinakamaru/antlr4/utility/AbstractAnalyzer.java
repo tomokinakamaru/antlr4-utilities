@@ -8,18 +8,12 @@ public abstract class AbstractAnalyzer {
 
   public void initialize() {}
 
-  public final void analyze(Context context) {
-    dispatch(context);
-    initialize();
-    analyze();
+  public void run(AbstractAnalyzer analyzer) {
+    analyzer.analyze(context);
   }
 
   public final void dispatch(Context context) {
     this.context = context;
-  }
-
-  protected final Context get() {
-    return context;
   }
 
   protected final <T> boolean has(Class<T> clazz) {
@@ -36,5 +30,11 @@ public abstract class AbstractAnalyzer {
 
   protected final <T> void remove(Class<T> clazz) {
     context.remove(clazz);
+  }
+
+  final void analyze(Context context) {
+    dispatch(context);
+    initialize();
+    analyze();
   }
 }

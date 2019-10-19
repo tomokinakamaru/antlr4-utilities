@@ -8,9 +8,7 @@ public abstract class AbstractCompiler {
 
   public final void compile(Context context) {
     for (AbstractAnalyzer analyzer : analyzers()) {
-      analyzer.dispatch(context);
-      analyzer.initialize();
-      analyzer.analyze();
+      analyzer.analyze(context);
     }
   }
 }
