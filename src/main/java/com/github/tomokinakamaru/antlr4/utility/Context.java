@@ -9,11 +9,11 @@ public final class Context {
 
   public <T> T get(Class<T> clazz) {
     if (map.containsKey(clazz)) {
-      return (T) map.get(clazz);
+      return clazz.cast(map.get(clazz));
     }
     for (Class<?> key : map.keySet()) {
       if (clazz.isAssignableFrom(key)) {
-        return (T) map.get(key);
+        return clazz.cast(map.get(key));
       }
     }
     return null;
