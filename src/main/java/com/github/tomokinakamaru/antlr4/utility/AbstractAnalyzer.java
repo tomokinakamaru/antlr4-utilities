@@ -8,8 +8,9 @@ public abstract class AbstractAnalyzer {
 
   public void initialize() {}
 
-  public void run(AbstractAnalyzer analyzer) {
+  public final <T extends AbstractAnalyzer> T run(T analyzer) {
     analyzer.analyze(context);
+    return analyzer;
   }
 
   public final void dispatch(Context context) {
