@@ -7,7 +7,7 @@ public abstract class AbstractVisitor<T> extends AbstractAnalyzer
 
   protected abstract ParserRuleContext getContext();
 
-  protected void analyze(T result) {}
+  protected abstract void analyze(T result);
 
   @Override
   public final void analyze() {
