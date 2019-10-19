@@ -11,12 +11,11 @@ import org.antlr.v4.runtime.CharStreams;
 
 public final class Arith extends AbstractCompiler {
 
-  public int run(String s) {
+  public Context run(String s) {
     Context context = new Context();
     context.set(CharStreams.fromString(s));
     compile(context);
-    Integer result = context.get(Integer.class);
-    return result == null ? Integer.MIN_VALUE : result;
+    return context;
   }
 
   @Override
