@@ -3,14 +3,8 @@ package arith.abst;
 import arith.antlr.ArithParser;
 import arith.antlr.ArithVisitor;
 import com.github.tomokinakamaru.antlr4.utility.AbstractVisitor;
-import org.antlr.v4.runtime.ParserRuleContext;
 
-public class Visitor<T> extends AbstractVisitor<T> implements ArithVisitor<T> {
-
-  @Override
-  protected Class<? extends ParserRuleContext> getContextClass() {
-    return ArithParser.ProgContext.class;
-  }
+public abstract class Visitor<T> extends AbstractVisitor<T> implements ArithVisitor<T> {
 
   @Override
   public T visitProg(ArithParser.ProgContext ctx) {

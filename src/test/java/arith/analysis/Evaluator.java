@@ -10,8 +10,13 @@ public final class Evaluator extends Visitor<Integer> {
   private VarTable varTable;
 
   @Override
-  protected Class<? extends ParserRuleContext> getContextClass() {
-    return ArithParser.ProgContext.class;
+  protected ParserRuleContext getContext() {
+    return get(ArithParser.ProgContext.class);
+  }
+
+  @Override
+  protected void analyze(Integer result) {
+    set(result);
   }
 
   @Override

@@ -3,14 +3,8 @@ package arith.abst;
 import arith.antlr.ArithListener;
 import arith.antlr.ArithParser;
 import com.github.tomokinakamaru.antlr4.utility.AbstractListener;
-import org.antlr.v4.runtime.ParserRuleContext;
 
-public class Listener extends AbstractListener implements ArithListener {
-
-  @Override
-  protected Class<? extends ParserRuleContext> getContextClass() {
-    return ArithParser.ProgContext.class;
-  }
+public abstract class Listener extends AbstractListener implements ArithListener {
 
   @Override
   public void enterProg(ArithParser.ProgContext ctx) {}
