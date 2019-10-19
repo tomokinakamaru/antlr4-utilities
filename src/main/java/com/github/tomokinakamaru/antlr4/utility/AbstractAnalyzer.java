@@ -6,7 +6,7 @@ public abstract class AbstractAnalyzer {
 
   public abstract void analyze();
 
-  public void init() {}
+  public void initialize() {}
 
   public final void dispatch(Context context) {
     this.context = context;
