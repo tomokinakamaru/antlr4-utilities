@@ -7,7 +7,6 @@ public final class Context {
 
   private final Map<Class<?>, Object> map = new LinkedHashMap<>();
 
-  @SuppressWarnings("unchecked")
   public <T> T get(Class<T> clazz) {
     if (map.containsKey(clazz)) {
       return (T) map.get(clazz);

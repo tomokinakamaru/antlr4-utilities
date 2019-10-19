@@ -40,7 +40,6 @@ public abstract class AbstractSymbolTable<T extends AbstractSymbolTable<T, E>, E
     }
   }
 
-  @SuppressWarnings("unchecked")
   public final T createChildScope() {
     T table = newSymbolTable().get();
     table.parent = (T) this;
