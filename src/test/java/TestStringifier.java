@@ -1,6 +1,6 @@
 import arith.Arith;
 import arith.antlr.ArithParser;
-import com.github.tomokinakamaru.antlr4.utility.Stringifier;
+import com.github.tomokinakamaru.utility.antlr4.Stringifier;
 import org.junit.jupiter.api.Test;
 
 final class TestStringifier {

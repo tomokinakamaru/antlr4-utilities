@@ -1,6 +1,6 @@
 package arith.data;
 
-import com.github.tomokinakamaru.antlr4.utility.AbstractSymbolTable;
+import com.github.tomokinakamaru.utility.antlr4.AbstractSymbolTable;
 import java.util.function.Supplier;
 
 public final class VarTable extends AbstractSymbolTable<VarTable, Integer> {

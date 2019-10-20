@@ -1,4 +1,4 @@
-package com.github.tomokinakamaru.antlr4.utility;
+package com.github.tomokinakamaru.utility.antlr4;
 
 import java.util.BitSet;
 import java.util.function.Function;

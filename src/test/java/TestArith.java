@@ -1,5 +1,5 @@
 import arith.Arith;
-import com.github.tomokinakamaru.antlr4.utility.Context;
+import com.github.tomokinakamaru.utility.antlr4.Context;
 import org.junit.jupiter.api.Test;
 
 final class TestArith {
