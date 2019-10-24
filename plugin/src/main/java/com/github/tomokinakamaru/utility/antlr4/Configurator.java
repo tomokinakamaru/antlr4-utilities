@@ -41,44 +41,50 @@ final class Configurator {
   }
 
   private Action<Task> getGenerateListenerAction(String name) {
-    Path src = findOutputFile(name + "BaseListener.java");
-    Path dst = src.getParent().resolve("Listener.java");
-    Function<String, String> function =
-        content ->
-            content.replace(
-                "class " + name + "BaseListener",
-                "abstract class Listener extends com.github.tomokinakamaru.utility.antlr4.AbstractListener");
-    return t -> copy(src, dst, function);
+    return t -> {
+      Path src = findOutputFile(name + "BaseListener.java");
+      Path dst = src.getParent().resolve("Listener.java");
+      Function<String, String> function =
+          content ->
+              content.replace(
+                  "class " + name + "BaseListener",
+                  "abstract class Listener extends com.github.tomokinakamaru.utility.antlr4.AbstractListener");
+      copy(src, dst, function);
+    };
   }
 
   private Action<Task> getGenerateVisitorAction(String name) {
-    Path src = findOutputFile(name + "BaseVisitor.java");
-    Path dst = src.getParent().resolve("Visitor.java");
-    Function<String, String> function =
-        content ->
-            content.replace(
-                "class " + name + "BaseVisitor<T> extends AbstractParseTreeVisitor<T>",
-                "abstract class Visitor<T> extends com.github.tomokinakamaru.utility.antlr4.AbstractVisitor<T>");
-    return t -> copy(src, dst, function);
+    return t -> {
+      Path src = findOutputFile(name + "BaseVisitor.java");
+      Path dst = src.getParent().resolve("Visitor.java");
+      Function<String, String> function =
+          content ->
+              content.replace(
+                  "class " + name + "BaseVisitor<T> extends AbstractParseTreeVisitor<T>",
+                  "abstract class Visitor<T> extends com.github.tomokinakamaru.utility.antlr4.AbstractVisitor<T>");
+      copy(src, dst, function);
+    };
   }
 
   private Action<Task> getGenerateStreamVisitorAction(String name) {
-    Path src = findOutputFile(name + "BaseVisitor.java");
-    Path dst = src.getParent().resolve("StreamVisitor.java");
-    Function<String, String> function =
-        content ->
-            content
-                .replace(
-                    "class "
-                        + name
-                        + "BaseVisitor<T> extends AbstractParseTreeVisitor<T> implements "
-                        + name
-                        + "Visitor<T>",
-                    "abstract class StreamVisitor<T> extends com.github.tomokinakamaru.utility.antlr4.AbstractStreamVisitor<T> implements "
-                        + name
-                        + "Visitor<java.util.stream.Stream<T>>")
-                .replace("public T ", "public java.util.stream.Stream<T> ");
-    return t -> copy(src, dst, function);
+    return t -> {
+      Path src = findOutputFile(name + "BaseVisitor.java");
+      Path dst = src.getParent().resolve("StreamVisitor.java");
+      Function<String, String> function =
+          content ->
+              content
+                  .replace(
+                      "class "
+                          + name
+                          + "BaseVisitor<T> extends AbstractParseTreeVisitor<T> implements "
+                          + name
+                          + "Visitor<T>",
+                      "abstract class StreamVisitor<T> extends com.github.tomokinakamaru.utility.antlr4.AbstractStreamVisitor<T> implements "
+                          + name
+                          + "Visitor<java.util.stream.Stream<T>>")
+                  .replaceAll("public T ", "public java.util.stream.Stream<T> ");
+      copy(src, dst, function);
+    };
   }
 
   private void copy(Path src, Path dst, Function<String, String> function) {
