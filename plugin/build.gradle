@@ -2,7 +2,6 @@ apply plugin: 'maven'
 
 dependencies {
     implementation 'com.github.tomokinakamaru:manifest-attributes:ad0c2fef88'
-    implementation project(':core')
     implementation gradleApi()
 }
 
