@@ -1,1 +1,5 @@
 rootProject.name = 'antlr4-utilities'
+
+include 'core'
+
+include 'plugin'
