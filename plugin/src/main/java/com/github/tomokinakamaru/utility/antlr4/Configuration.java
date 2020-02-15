@@ -4,9 +4,13 @@ import groovy.lang.Closure;
 
 public class Configuration {
 
-  Closure<?> filter;
+  private Closure<?> filter;
 
-  public void filter(Closure<?> filter) {
+  public Closure<?> getFilter() {
+    return this.filter;
+  }
+
+  public void setFilter(Closure<?> filter) {
     this.filter = filter;
   }
 }
