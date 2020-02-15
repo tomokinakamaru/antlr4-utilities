@@ -115,7 +115,7 @@ final class Configurator {
 
   private Action<Task> getFilterAction() {
     return t -> {
-      Closure<?> filter = getConfiguration().getFilter();
+      Closure<?> filter = getConfiguration().filter;
       if (filter == null) {
         return;
       }
