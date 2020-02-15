@@ -19,7 +19,7 @@ public final class Arith extends AbstractCompiler {
   }
 
   @Override
-  protected List<AbstractAnalyzer> analyzers() {
+  protected List<AbstractAnalyzer> getAnalyzers() {
     return Arrays.asList(new Parser(), new Evaluator());
   }
 }

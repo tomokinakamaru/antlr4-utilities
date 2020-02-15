@@ -4,10 +4,10 @@ import java.util.List;
 
 public abstract class AbstractCompiler {
 
-  protected abstract List<AbstractAnalyzer> analyzers();
+  protected abstract List<AbstractAnalyzer> getAnalyzers();
 
   public final void compile(Context context) {
-    for (AbstractAnalyzer analyzer : analyzers()) {
+    for (AbstractAnalyzer analyzer : getAnalyzers()) {
       analyzer.analyze(context);
     }
   }
