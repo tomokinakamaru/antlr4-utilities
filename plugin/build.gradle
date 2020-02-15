@@ -1,5 +1,4 @@
 apply plugin: 'maven'
-apply plugin: 'groovy'
 
 dependencies {
     implementation 'com.github.tomokinakamaru:manifest-attributes:0.1.0'
