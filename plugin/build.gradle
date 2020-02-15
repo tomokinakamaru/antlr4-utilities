@@ -15,14 +15,3 @@ jar {
 repositories {
     maven { url 'https://jitpack.io' }
 }
-
-sourceSets {
-    main {
-        java {
-            srcDirs = []
-        }
-        groovy {
-            srcDirs = ['src/main/java', 'src/main/groovy']
-        }
-    }
-}
