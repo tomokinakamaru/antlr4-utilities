@@ -1,0 +1,16 @@
+plugins {
+    id 'antlr'
+    id 'java-library'
+}
+
+sourceCompatibility = 1.8
+
+targetCompatibility = 1.8
+
+dependencies {
+    antlr "org.antlr:antlr4:${antlrVersion}"
+}
+
+generateTestGrammarSource {
+    arguments = ['-visitor', '-listener']
+}
