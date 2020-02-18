@@ -4,17 +4,15 @@ public abstract class AbstractAnalyzer {
 
   private Context context;
 
-  public abstract void analyze();
+  protected abstract void analyze();
 
-  public void initialize() {}
+  protected void beforeAnalyze() {}
+
+  protected void afterAnalyze() {}
 
   public final <T extends AbstractAnalyzer> T run(T analyzer) {
     analyzer.analyze(context);
     return analyzer;
-  }
-
-  public final void dispatch(Context context) {
-    this.context = context;
   }
 
   protected final <T> boolean has(Class<T> clazz) {
@@ -34,8 +32,9 @@ public abstract class AbstractAnalyzer {
   }
 
   final void analyze(Context context) {
-    dispatch(context);
-    initialize();
+    this.context = context;
+    beforeAnalyze();
     analyze();
+    afterAnalyze();
   }
 }
