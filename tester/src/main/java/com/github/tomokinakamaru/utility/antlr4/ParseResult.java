@@ -47,7 +47,8 @@ final class ParseResult {
       return false;
     }
     CharStream stream = context.start.getInputStream();
-    Interval interval = context.getSourceInterval();
-    return stream.getText(interval).length() == text.length();
+    int start = context.start.getStartIndex();
+    int stop = context.stop.getStopIndex();
+    return stream.getText(new Interval(start, stop)).length() == text.length();
   }
 }
